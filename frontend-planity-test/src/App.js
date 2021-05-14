@@ -1,5 +1,6 @@
 import "./App.css";
 import planity from "./planity.png";
+import InputEmailSuggest from "./components/InputEmailSuggest";
 
 function App() {
   return (
@@ -7,6 +8,8 @@ function App() {
       <header className="App-header">
         <img src={planity} alt="logo" className="App-logo" />
       </header>
+      <br />
+      <InputEmailSuggest />
     </div>
   );
 }
