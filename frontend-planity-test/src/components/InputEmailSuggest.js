@@ -23,6 +23,10 @@ export default class InputEmailSuggest extends React.Component {
       const regex = new RegExp(`^${value.substring(firstLetters)}`, "i");
       // matching with the best(s) provider(s)
       suggestions = this.providers.sort().filter(match => regex.test(match));
+      // manage case with no suggestion or when user only tap @ for only having most populars providers
+      if (suggestions.length === 0 || suggestions.length === providers.length) {
+        suggestions = ["orange.fr", "outlook.fr", "gmail.com"];
+      }
     }
     this.setState(() => ({ suggestions, text: value }));
   };
