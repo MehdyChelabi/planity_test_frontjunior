@@ -1,6 +1,5 @@
 import React from "react";
 import providers from "../libs/providers.json";
-
 export default class InputEmailSuggest extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +26,10 @@ export default class InputEmailSuggest extends React.Component {
       if (suggestions.length === 0 || suggestions.length === providers.length) {
         suggestions = ["orange.fr", "outlook.fr", "gmail.com"];
       }
+      // no suggestion if email valid
+      if (this.validateEmail(value)) {
+        suggestions = [];
+      }
     }
     this.setState(() => ({ suggestions, text: value }));
   };
@@ -37,10 +40,20 @@ export default class InputEmailSuggest extends React.Component {
     // save the substring before the @ for not concat with the user enter (eg ...@(out)outlook.fr)
     let indiceSubStr = text.indexOf("@") + 1;
     let saveText = text.substring(0, indiceSubStr);
+    // no suggestion if email valid
+    if (this.validateEmail(saveText + value)) {
+      suggestions = [];
+    }
     this.setState(() => ({
       text: saveText + value,
       suggestions: suggestions
     }));
+  }
+
+  // check if it's a valid email with regular expression
+  validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // thanks to stackoverflow
+    return re.test(String(email).toLowerCase());
   }
 
   // email suggestion render
