@@ -30,9 +30,11 @@ export default class InputEmailSuggest extends React.Component {
   suggestionsSelected(value) {
     const { text } = this.state;
     let { suggestions } = this.state;
-
+    // save the substring before the @ for not concat with the user enter (eg ...@(out)outlook.fr)
+    let indiceSubStr = text.indexOf("@") + 1;
+    let saveText = text.substring(0, indiceSubStr);
     this.setState(() => ({
-      text: text + value,
+      text: saveText + value,
       suggestions: suggestions
     }));
   }
