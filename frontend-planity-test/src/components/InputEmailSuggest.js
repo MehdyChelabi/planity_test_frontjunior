@@ -67,7 +67,10 @@ export default class InputEmailSuggest extends React.Component {
       <div>
         {suggestions.map(item => {
           return (
-            <p onClick={() => this.suggestionsSelected(item)}>
+            <p
+              onClick={() => this.suggestionsSelected(item)}
+              key={item.toString()}
+            >
               <u>{item}</u>
             </p>
           );
