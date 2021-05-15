@@ -1,7 +1,7 @@
 span:hover {
   cursor: pointer;
 }
-.email {
+.emailBlock {
   display: flex;
 }
 .mailSuggest {
