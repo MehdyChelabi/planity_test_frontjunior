@@ -1,0 +1,10 @@
+span:hover {
+  cursor: pointer;
+}
+.email {
+  display: flex;
+}
+.mailSuggest {
+  text-decoration: underline;
+  margin-left: 1em;
+}

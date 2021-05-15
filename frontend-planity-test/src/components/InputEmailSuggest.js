@@ -1,5 +1,6 @@
 import React from "react";
 import providers from "../libs/providers.json";
+import "./InputEmailSuggest.css";
 export default class InputEmailSuggest extends React.Component {
   constructor(props) {
     super(props);
@@ -64,15 +65,15 @@ export default class InputEmailSuggest extends React.Component {
       return null;
     }
     return (
-      <div>
-        {suggestions.map(item => {
+      <div className="suggestions">
+        {suggestions.map(mail => {
           return (
-            <p
-              onClick={() => this.suggestionsSelected(item)}
-              key={item.toString()}
+            <span
+              onClick={() => this.suggestionsSelected(mail)}
+              key={mail.toString()}
             >
-              <u>{item}</u>
-            </p>
+              <span className="mailSuggest">{mail}</span>
+            </span>
           );
         })}
       </div>
@@ -82,8 +83,13 @@ export default class InputEmailSuggest extends React.Component {
   render() {
     const { text } = this.state;
     return (
-      <div>
-        <input value={text} onChange={this.onTextChange} type="text" />
+      <div className="emailBlock">
+        <input
+          value={text}
+          onChange={this.onTextChange}
+          type="Email"
+          placeholder="Adresse email"
+        />
         {this.renderSuggestion()}
       </div>
     );

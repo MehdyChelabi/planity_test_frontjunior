@@ -9,7 +9,9 @@ function App() {
         <img src={planity} alt="logo" className="App-logo" />
       </header>
       <br />
-      <InputEmailSuggest />
+      <div className="inputEmailComponent">
+        <InputEmailSuggest />
+      </div>
     </div>
   );
 }
