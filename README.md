@@ -1,4 +1,4 @@
-# planity_test_frontjunior
+# Frontend Junior test
 
 How to run it ?
 
